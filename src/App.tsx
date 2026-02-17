@@ -1,10 +1,12 @@
 import "./App.css";
 import { Route, Routes } from "react-router";
-import NoteLayout from "./components/layouts/NoteLayout";
-import Workspace from "./components/notes/Workspace";
 import PrivateRoute from "./components/auth/PrivateRoute";
-import Login from "./pages/login";
 import AuthProvider from "./context/AuthProvider";
+import { lazy } from "react";
+const Login = lazy(() => import("./pages/login"));
+const NoteLayout = lazy(() => import("./components/layouts/NoteLayout"));
+const Workspace = lazy(() => import("./components/notes/Workspace"));
+const NoFound = lazy(() => import("./pages/NoFound"));
 
 function App() {
   return (
@@ -28,6 +30,8 @@ function App() {
             }
           />
         </Route>
+
+        <Route path="*" element={<NoFound />} />
       </Routes>
     </AuthProvider>
   );

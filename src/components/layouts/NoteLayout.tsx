@@ -1,19 +1,23 @@
-
-
-import { Outlet } from "react-router-dom"
-import Sidebar from "../notes/Sidebar"
-
+import { Outlet } from "react-router-dom";
+import { lazy, Suspense } from "react";
+import ErrorBoundary from "../common/ErrorBoundary";
+const Sidebar = lazy(() => import("../notes/Sidebar"));
 
 function NoteLayout() {
   return (
     <div>
       <div className="Notes__wrapper">
-      <Sidebar />
-      <Outlet/>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Sidebar />
+        </Suspense>
+        <Suspense fallback={<div>Loading...</div>}>
+          <ErrorBoundary>
+            <Outlet />
+          </ErrorBoundary>
+        </Suspense>
       </div>
     </div>
-    
-  )
+  );
 }
 
-export default NoteLayout
+export default NoteLayout;
