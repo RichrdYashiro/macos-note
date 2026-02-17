@@ -41,7 +41,18 @@
   color: #888;
 }
 
+.workSpace {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 10px;
+}
 .Notes__wrapper {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  background-color: rgb(194, 179, 160);
+  padding: 20px;
+  color: #000;
+  border-radius: 12px;
+  width: 920px;
 }

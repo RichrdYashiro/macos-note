@@ -1,7 +1,10 @@
 
 function Workspace() {
   return (
-    <div>А тут будет место редактирования или чтения</div>
+    <div className="workSpace">
+      
+      
+      А тут будет место редактирования или чтения</div>
   )
 }
 
