@@ -3,6 +3,7 @@ import { Route, Routes } from "react-router";
 import PrivateRoute from "./components/auth/PrivateRoute";
 import AuthProvider from "./context/AuthProvider";
 import { lazy } from "react";
+
 const Login = lazy(() => import("./pages/login"));
 const NoteLayout = lazy(() => import("./components/layouts/NoteLayout"));
 const Workspace = lazy(() => import("./components/notes/Workspace"));

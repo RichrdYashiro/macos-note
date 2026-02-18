@@ -5,7 +5,7 @@ const Sidebar = lazy(() => import("../notes/Sidebar"));
 
 function NoteLayout() {
   return (
-    <div>
+    <div className="Notes">
       <div className="Notes__wrapper">
         <Suspense fallback={<div>Loading...</div>}>
           <Sidebar />
