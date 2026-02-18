@@ -1,13 +1,28 @@
+import { Link } from "react-router-dom";
+import { Button, TextInput } from "@mantine/core";
+import { useNotes } from "../../hooks/useNotes";
+import ErrorBoundary from "../common/ErrorBoundary";
 
- function Sidebar() {
+function Sidebar() {
+  const { notes, addNote } = useNotes("");
+
+  if (!notes) return null;
   return (
-    <div >
     <div>
-      тут будут все записки
+      <TextInput placeholder="Поиск" />
+      {notes.length === 0 && <>Список пуст</>}
+      <Button onClick={addNote}>Новая заметка</Button>
+      <ErrorBoundary>
+        <ul>
+          {notes.map((note) => (
+            <li key={note.id}>
+              <Link to={`/notes/${note.id}`}>{note.title}</Link>
+            </li>
+          ))}
+        </ul>
+      </ErrorBoundary>
     </div>
-
-    </div>
-  )
+  );
 }
 
-export default Sidebar
+export default Sidebar;

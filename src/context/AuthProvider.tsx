@@ -41,7 +41,12 @@ function AuthProvider({ children }: AuthProviderProps) {
     <AuthContext.Provider value={value}>
       {children}
 
-      {user && <Button onClick={handleSingout}>signout</Button>}
+      {user && (
+        <>
+          {user.name}
+          <Button onClick={handleSingout}>signout</Button>
+        </>
+      )}
     </AuthContext.Provider>
   );
 }
