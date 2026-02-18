@@ -15,9 +15,7 @@ function Workspace() {
 
   const [isEditing, setIsEditing] = useState(false);
 
-  function EditNote(id: number) {
-    setIsEditing(true);
-  }
+  const toggleEdit = () => setIsEditing((prev) => !prev);
 
   return (
     <div className="workSpace">
@@ -30,8 +28,12 @@ function Workspace() {
               new Date(note.updatedAt).toLocaleString("ru-RU")}
           </div>
           {note?.content}
-          <Button onClick={() => deleteNote(Number(id))}>Удалить</Button>
-          <Button onClick={() => EditNote(Number(id))}>Редактировать</Button>
+          <Button color="red" mt="xs" onClick={() => deleteNote(Number(id))}>
+            Удалить
+          </Button>
+          <Button color="yellow" mt="md" onClick={toggleEdit}>
+            Редактировать
+          </Button>
         </>
       )}
       {isEditing && (
@@ -45,6 +47,9 @@ function Workspace() {
 
             <Textarea label="Описание" value={note?.content}></Textarea>
           </div>
+          <Button color="green" mt="md" onClick={toggleEdit}>
+            Сохранить
+          </Button>
         </>
       )}
     </div>
